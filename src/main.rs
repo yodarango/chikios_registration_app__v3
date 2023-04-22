@@ -1,5 +1,10 @@
 use mysql_async::{prelude::*, Pool, Opts, UrlError};
+use serde::{Deserialize, Serialize};
+use serde_json;
+mod utilities;
+use utilities::utils::vector_to_json;
 
+#[derive(Serialize, Deserialize, Debug)]
 struct User {
     ID: u64,
     signature: String,
@@ -15,9 +20,8 @@ let users = "SELECT ID, signature FROM users"
 .with(())
 .map(&mut conn, |(ID, signature)| User { ID, signature }).await?;
 
-for user in users {
-    println!("ID: {} signature: {}", user.ID, user.signature);
-}
+let sss = vector_to_json(&users)?;
+println!("{}", sss);
 
 // Dropped connection will go to the pool
 drop(conn);

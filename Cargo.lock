@@ -233,6 +233,7 @@ name = "chkos"
 version = "0.1.0"
 dependencies = [
  "mysql_async",
+ "serde",
  "serde_json",
  "tokio",
  "warp",
