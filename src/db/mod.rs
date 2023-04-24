@@ -6,20 +6,6 @@ let db_url = Opts::from_url("mysql://root:root@localhost/scholar_dev?socket=%2Ft
 let pool = Pool::new(db_url);
 let mut conn = pool.get_conn().await?;
 
-// let users = "SELECT ID, signature FROM users"
-// .with(())
-// .map(&mut conn, |(ID, signature)| User { ID, signature }).await?;
-
-// let sss = vector_to_json(&users)?;
-// println!("{}", sss);
-
-// // Dropped connection will go to the pool
-// drop(conn);
-
-// // The Pool must be disconnected explicitly because
-// // it's an asynchronous operation.
-// pool.disconnect().await?;
-
-
+// pass the connection and the pool to the caller
 Ok((conn, pool))
 } 
