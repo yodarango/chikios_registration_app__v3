@@ -9,11 +9,12 @@ mod db;
 #[allow(unused_imports, unused_variables)]
 #[tokio::main]
 async fn main()  -> Result<(), mysql_async::Error> {
-let mut pool = db::connection().await?;
-let query = "SELECT ID, signature FROM users";
-let result = db::execute_query(query, &pool).await;
+let pool = db::connection().await?;
+let result = db::queries::users::get_all(pool).await?;
 
-
+for res in result {
+    println!("{:?}", res);
+}
  Ok(())
 } 
 
