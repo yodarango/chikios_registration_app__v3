@@ -4,10 +4,10 @@ use serde::{Deserialize, Serialize};
 pub struct User{
     pub ID: u64,
     pub signature: String,
-    // guardian_first_name: String,
-    // guardian_last_name: String,
-    // guardian_phone: String,
-    // first_name: String,
-    // last_name: String,
-    // age: u8,
+    // pub guardian_first_name: String,
+    // pub guardian_last_name: String,
+    // pub guardian_phone: String,
+    // pub first_name: String,
+    // pub last_name: String,
+    // pub age: u8,
 }
